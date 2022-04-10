@@ -8,6 +8,21 @@ public class Example : MonoBehaviour
         finiteStateMachine = gameObject.AddComponent<FiniteStateMachineRunner>().Initialize<State>(this, State.Idle);
     }
 
+    private void OnAttackStateEnter()
+    {
+        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    private void OnAttackStateUpdate()
+    {
+        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    private void OnAttackStateExit()
+    {
+        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
     private void OnIdleStateEnter()
     {
         Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
@@ -27,25 +42,10 @@ public class Example : MonoBehaviour
         Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
     }
 
-    private void OnAttackStateEnter()
-    {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
-    }
-
-    private void OnAttackStateUpdate()
-    {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
-    }
-
-    private void OnAttackStateExit()
-    {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
-    }
-
     private enum State
     {
-        Idle,
         Attack,
+        Idle,
     }
     private FiniteStateMachine<State> finiteStateMachine;
 }
