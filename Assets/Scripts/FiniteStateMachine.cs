@@ -12,8 +12,7 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
         set
         {
             monoBehaviour.Invoke("On" + state.ToString() + "StateExit", 0);
-            state = value;
-            monoBehaviour.Invoke("On" + state.ToString() + "StateEnter", 0);
+            CallStateEnter(value);
         }
     }
     private TState state;
@@ -21,13 +20,19 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
     public FiniteStateMachine(MonoBehaviour monoBehaviour, TState initialState)
     {
         this.monoBehaviour = monoBehaviour;
-        state = initialState;
-        monoBehaviour.Invoke("On" + state.ToString() + "StateEnter", 0);
+        CallStateEnter(initialState);
+        state.ToString() + "StateEnter", 0);
     }
 
     public void Update()
     {
         monoBehaviour.Invoke("On" + state.ToString() + "StateUpdate", 0);
+    }
+    
+    private void CallStateEnter(TState state)
+    {
+        this.state = state;
+        monoBehaviour.Invoke("On" + state.ToString() + "StateEnter", 0);
     }
 
     private MonoBehaviour monoBehaviour;
