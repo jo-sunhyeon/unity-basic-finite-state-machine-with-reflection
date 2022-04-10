@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using UnityEngine;
 
 public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enum
@@ -11,7 +12,7 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
         }
         set
         {
-            monoBehaviour.Invoke("On" + state.ToString() + "StateExit", 0);
+            Call("Exit");
             CallStateEnter(value);
         }
     }
@@ -25,13 +26,19 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
 
     public void Update()
     {
-        monoBehaviour.Invoke("On" + state.ToString() + "StateUpdate", 0);
+        Call("Update");
     }
     
     private void CallStateEnter(TState state)
     {
         this.state = state;
-        monoBehaviour.Invoke("On" + state.ToString() + "StateEnter", 0);
+        Call("Enter");
+    }
+
+    private void Call(string eventName)
+    {
+        monoBehaviour.GetType().GetMethod("On" + state + "State" + eventName,
+            BindingFlags.Instance | BindingFlags.NonPublic).Invoke(monoBehaviour, new object[] {});
     }
 
     private MonoBehaviour monoBehaviour;
