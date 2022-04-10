@@ -30,10 +30,5 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
         monoBehaviour.Invoke("On" + state.ToString() + "StateUpdate", 0);
     }
 
-    private void OnDestroy()
-    {
-        monoBehaviour.Invoke("On" + state.ToString() + "StateExit", 0);
-    }
-
     private MonoBehaviour monoBehaviour;
 }
