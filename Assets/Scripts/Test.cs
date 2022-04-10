@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using UnityEngine;
 
-public class Example : MonoBehaviour
+public class Test : MonoBehaviour
 {
     private void Awake()
     {
