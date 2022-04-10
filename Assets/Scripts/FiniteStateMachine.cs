@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : struct, Enum
+public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enum
 {
     public TState State
     {
