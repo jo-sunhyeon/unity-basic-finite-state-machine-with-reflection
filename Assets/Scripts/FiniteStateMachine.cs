@@ -21,7 +21,6 @@ public class FiniteStateMachine<TState> : IFiniteStateMachine where TState : Enu
     {
         this.monoBehaviour = monoBehaviour;
         CallStateEnter(initialState);
-        state.ToString() + "StateEnter", 0);
     }
 
     public void Update()
