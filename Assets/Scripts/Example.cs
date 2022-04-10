@@ -10,27 +10,27 @@ public class Example : MonoBehaviour
 
     private void OnAttackStateEnter()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
     }
 
     private void OnAttackStateUpdate()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
     }
 
     private void OnAttackStateExit()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
     }
 
     private void OnIdleStateEnter()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
     }
 
     private void OnIdleStateUpdate()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
         if (Time.time > 1)
         {
             finiteStateMachine.State = State.Attack;
@@ -39,7 +39,7 @@ public class Example : MonoBehaviour
 
     private void OnIdleStateExit()
     {
-        Debug.Log(GetType() + "." + MethodBase.GetCurrentMethod().Name);
+        Debug.Log($"{GetType()}.{MethodBase.GetCurrentMethod().Name}");
     }
 
     private enum State
